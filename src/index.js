@@ -195,10 +195,7 @@ export default function ({template, traverse, types: t}) {
           srcBody.traverse(globalsVisitor, globalsState);
 
           // Handle excludes
-          exclude = new Set([
-            ...exclude,
-            ...traverse.Scope.contextVariables
-          ]);
+          exclude = new Set(exclude);
           const vars = Object.keys(globalsState.globals).filter(v => !exclude.has(v));
 
           // No globals -> no processing needed
